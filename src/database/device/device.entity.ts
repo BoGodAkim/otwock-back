@@ -15,8 +15,8 @@ export class Device {
     lastCoordinates: Circle;
 
 
-    // @Column()
-    // timestamp: Timestamp;
+    @Column()
+    timestamp: Date;
 
     @OneToMany(() => NotificationAddress, notificationAddress => notificationAddress.device)
     notificationAddresses: NotificationAddress[];

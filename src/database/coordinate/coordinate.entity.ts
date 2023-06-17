@@ -18,6 +18,6 @@ export class Coordinate {
     })
     coordinates: Circle;
 
-    // @Column()
-    // timestamp: Timestamp;
+    @Column()
+    timestamp: Date;
 }

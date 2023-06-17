@@ -9,6 +9,7 @@ export class Area {
     id: number;
 
     @Column({
+        type: 'polygon',
         nullable: true,
     })
     polygon: Polygon;
