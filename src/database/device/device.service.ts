@@ -21,6 +21,10 @@ export class DeviceService {
     });
     //return this.deviceRepository.findOneBy({ id: id, relations: {notificationAddresses:true}});
   }
+    
+    async findAll(): Promise<Device[]> {
+        return this.deviceRepository.find();
+    }
 
   async updateLocation(id: string, location: Circle): Promise<void> {
     const device = await this.deviceRepository.findOneBy({ id: id });
