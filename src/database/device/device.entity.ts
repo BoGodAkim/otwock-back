@@ -9,6 +9,9 @@ export class Device {
     @PrimaryColumn()
     id: string;
 
+    @Column()
+    fcmToken: string;
+
     @Column({
         nullable: true,
         type: 'circle',

@@ -30,7 +30,7 @@ export class AppControllerApp {
   }
 
   @Get('/id')
-  async getId(): Promise<string> {
+  async getId(@Body() fcmToken:string): Promise<string> {
     const uuid = randomUUID();
     const device = new Device();
     device.id = uuid;
