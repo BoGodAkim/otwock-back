@@ -15,18 +15,18 @@ export class AppControllerAdmin {
   constructor(private readonly alertService: AlertService) {}
 
   @Post('/alert')
-  addAlert(@Body() alert: Alert) {
-    return this.alertService.create(alert);
+  async addAlert(@Body() alert: Alert): Promise<void> {
+    await this.alertService.create(alert);
   }
 
   @Put('/alert')
-  updateAlert(@Body() alert: Alert) {
-    return this.alertService.update(alert);
+  async updateAlert(@Body() alert: Alert): Promise<void> {
+    await this.alertService.update(alert);
   }
 
   @Delete('/alert/:id')
-  deleteAlert(@Param('id') id: number) {
-    return this.alertService.delete(id);
+  async deleteAlert(@Param('id') id: number): Promise<void> {
+    await this.alertService.delete(id);
   }
 
   @Get('/alert')
