@@ -2,8 +2,8 @@ import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 import { randomUUID } from 'crypto';
 
-@Controller()
-export class AppController {
+@Controller('app')
+export class AppControllerApp {
   constructor(private readonly appService: AppService) {}
 
   @Get()
