@@ -88,7 +88,7 @@ export class NotificationsService {
     dryRun?: boolean,
   ): Promise<BatchResponse> {
     if (process.env.NODE_ENV === 'local') {
-      for (const { notification} of messages) {
+      for (const { notification } of messages) {
         shell.exec(
           `echo '{ "aps": { "alert": ${JSON.stringify(
             notification,

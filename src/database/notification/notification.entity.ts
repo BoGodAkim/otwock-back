@@ -1,22 +1,26 @@
-import {Entity, Column, ManyToOne, PrimaryGeneratedColumn, JoinColumn} from 'typeorm';
-import {Device} from "../device/device.entity";
-import {Alert} from "../alert/alert.entity";
-
+import {
+  Entity,
+  Column,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
+import { Device } from '../device/device.entity';
+import { Alert } from '../alert/alert.entity';
 
 @Entity()
 export class Notification {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ManyToOne(() => Device, device => device.notificationAddresses)
-    @JoinColumn({name: "device_id"})
-    device: Device;
+  @ManyToOne(() => Device, (device) => device.notificationAddresses)
+  @JoinColumn({ name: 'device_id' })
+  device: Device;
 
-    @ManyToOne(() => Alert, alert => alert.notifications)
-    @JoinColumn({name: "alert_id"})
-    alert: Alert;
+  @ManyToOne(() => Alert, (alert) => alert.notifications)
+  @JoinColumn({ name: 'alert_id' })
+  alert: Alert;
 
-    @Column()
-    text: string;
-
+  @Column()
+  text: string;
 }

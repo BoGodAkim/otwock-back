@@ -6,33 +6,31 @@ import { Notification } from '../notification/notification.entity';
 
 @Entity()
 export class Device {
-    @PrimaryColumn()
-    id: string;
+  @PrimaryColumn()
+  id: string;
 
-    @Column()
-    fcmToken: string;
+  @Column()
+  fcmToken: string;
 
-    @Column({
-        nullable: true,
-        type: 'circle',
-        transformer: circleTransformer,
-    })
-    lastCoordinates: Circle;
+  @Column({
+    nullable: true,
+    type: 'circle',
+    transformer: circleTransformer,
+  })
+  lastCoordinates: Circle;
 
+  @Column({ nullable: true })
+  timestamp: Date;
 
-    @Column(
-        {        nullable: true,
-        }
-    )
-    timestamp: Date;
+  @OneToMany(
+    () => NotificationAddress,
+    (notificationAddress) => notificationAddress.device,
+  )
+  notificationAddresses: NotificationAddress[];
 
-    @OneToMany(() => NotificationAddress, notificationAddress => notificationAddress.device)
-    notificationAddresses: NotificationAddress[];
+  @OneToMany(() => Coordinate, (coordinate) => coordinate.device)
+  coordinates: Coordinate[];
 
-    @OneToMany(() => Coordinate, coordinate => coordinate.device)
-    coordinates: Coordinate[];
-
-    @OneToMany(() => Notification, notification => notification.device)
-    notifications: Notification[];
-
+  @OneToMany(() => Notification, (notification) => notification.device)
+  notifications: Notification[];
 }

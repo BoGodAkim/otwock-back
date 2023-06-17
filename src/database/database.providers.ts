@@ -7,29 +7,27 @@ import { notificationProviders } from './notification/notification.providers';
 import { notificationAddressProviders } from './notification_address/notification_address.providers';
 
 export const databaseProviders = [
-    {
-        provide: 'DATA_SOURCE',
-        useFactory: async () => {
-            const dataSource = new DataSource({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5432,
-                username: 'postgres',
-                password: '13102003',
-                database: 'postgres',
-                entities: [
-                    __dirname + '/**/*.entity{.ts,.js}',
-                ],
-                synchronize: true,
-            });
+  {
+    provide: 'DATA_SOURCE',
+    useFactory: async () => {
+      const dataSource = new DataSource({
+        type: 'postgres',
+        host: 'localhost',
+        port: 5432,
+        username: 'postgres',
+        password: '13102003',
+        database: 'postgres',
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      });
 
-            return dataSource.initialize();
-        },
+      return dataSource.initialize();
     },
-    // ...alertProviders,
-    // ...areaProviders,
-    // ...coordinateProviders,
-    // ...deviceProviders,
-    // ...notificationProviders,
-    // ...notificationAddressProviders,
+  },
+  // ...alertProviders,
+  // ...areaProviders,
+  // ...coordinateProviders,
+  // ...deviceProviders,
+  // ...notificationProviders,
+  // ...notificationAddressProviders,
 ];

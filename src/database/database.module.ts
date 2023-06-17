@@ -22,8 +22,20 @@ import { NotificationAddressService } from './notification_address/notification_
     ...deviceProviders,
     ...notificationProviders,
     ...notificationAddressProviders,
-    AlertService, AreaService, CoordinateService, DeviceService, NotificationService, NotificationAddressService
+    AlertService,
+    AreaService,
+    CoordinateService,
+    DeviceService,
+    NotificationService,
+    NotificationAddressService,
   ],
-  exports: [AlertService, AreaService, CoordinateService, DeviceService, NotificationService, NotificationAddressService],
+  exports: [
+    AlertService,
+    AreaService,
+    CoordinateService,
+    DeviceService,
+    NotificationService,
+    NotificationAddressService,
+  ],
 })
-export class DatabaseModule { }
+export class DatabaseModule {}

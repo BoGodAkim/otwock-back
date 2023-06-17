@@ -1,36 +1,42 @@
-import { Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Entity } from "typeorm";
-import { Device } from "../device/device.entity";
-import { circleTransformer, Circle } from "../circle";
+import {
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+  Entity,
+} from 'typeorm';
+import { Device } from '../device/device.entity';
+import { circleTransformer, Circle } from '../circle';
 
 @Entity()
 export class NotificationAddress {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ManyToOne(() => Device, device => device.notificationAddresses)
-    @JoinColumn({ name: 'device_id' })
-    device: Device;
+  @ManyToOne(() => Device, (device) => device.notificationAddresses)
+  @JoinColumn({ name: 'device_id' })
+  device: Device;
 
-    @Column({
-        type: 'circle',
-        transformer: circleTransformer,
-    })
-    circle: Circle;
+  @Column({
+    type: 'circle',
+    transformer: circleTransformer,
+  })
+  circle: Circle;
 
-    @Column()
-    country: string;
+  @Column()
+  country: string;
 
-    @Column()
-    city: string;
+  @Column()
+  city: string;
 
-    @Column()
-    postalCode: string;
+  @Column()
+  postalCode: string;
 
-    @Column()
-    street: string;
+  @Column()
+  street: string;
 
-    @Column()
-    houseNumber: string;
+  @Column()
+  houseNumber: string;
 
-    //TODO: add more fields
+  //TODO: add more fields
 }
