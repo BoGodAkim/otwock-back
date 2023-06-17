@@ -1,5 +1,5 @@
 import { Entity, PrimaryColumn, Column, Timestamp } from 'typeorm';
-import { Circle } from '../circle';
+import { Circle, circleTransformer } from '../circle';
 
 @Entity()
 export class Device {
@@ -8,12 +8,7 @@ export class Device {
 
     @Column({
         type: 'circle',
-        transformer: {
-            to: (value: any) => `(${value.x},${value.y}),${value.radius}`,
-            from: (value: Circle) => {
-                return { x: value.x, y: value.y, radius: value.radius };
-            }
-        },
+        transformer: circleTransformer,
     })
     lastCoordinates: Circle;
 
