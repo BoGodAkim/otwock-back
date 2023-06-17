@@ -3,7 +3,7 @@ import { Repository } from "typeorm";
 import { Area } from "./area.entity";
 
 @Injectable()
-export class NotificationService {
+export class AreaService {
     constructor(
         @Inject('AREA_REPOSITORY')
         private areaRepository:

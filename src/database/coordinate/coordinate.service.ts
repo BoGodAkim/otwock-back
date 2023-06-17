@@ -3,7 +3,7 @@ import { Repository } from "typeorm";
 import { Coordinate } from "./coordinate.entity";
 
 @Injectable()
-export class NotificationService {
+export class CoordinateService {
     constructor(
         @Inject('COORDINATE_REPOSITORY')
         private coordinateRepository:

@@ -3,7 +3,7 @@ import { Repository } from "typeorm";
 import { Device } from "./device.entity";
 
 @Injectable()
-export class NotificationService {
+export class DeviceService {
     constructor(
         @Inject('DEVICE_REPOSITORY')
         private deviceRepository:
