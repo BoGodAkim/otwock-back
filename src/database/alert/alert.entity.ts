@@ -8,6 +8,21 @@ export class Alert {
   id: number;
 
   @Column()
+  isUrgent: boolean;
+
+  @Column()
+  categoryId: number;
+
+  @Column()
+  dateOfCreation: Date;
+
+  @Column()
+  dateOfStart: Date;
+
+  @Column()
+  dateOfEnd: Date;
+
+  @Column()
   description: string;
 
   @Column()
