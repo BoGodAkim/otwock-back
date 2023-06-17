@@ -24,8 +24,9 @@ export class AppControllerAdmin {
     await this.alertService.create(alert);
   }
 
-  @Put('/alert')
-  async updateAlert(@Body() alert: Alert): Promise<void> {
+  @Put('/alert/:alertId')
+  async updateAlert(@Param('alertId') alertId: number, @Body() alert: Alert): Promise<void> {
+    alert.id = alertId;
     await this.alertService.update(alert);
   }
 
@@ -34,7 +35,7 @@ export class AppControllerAdmin {
     await this.alertService.delete(id);
   }
 
-  @Get('/alert')
+  @Get('/alerts')
   getAllAlerts(): Promise<Alert[]> {
     return this.alertService.findAll();
   }
