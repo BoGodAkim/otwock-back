@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 import {AlertService} from "./database/alert/alert.service";
 import {Alert} from "./database/alert/alert.entity";
 
-@Controller('app')
+@Controller('admin')
 export class AppControllerAdmin {
     constructor(private readonly alertService: AlertService) {}
 
