@@ -1,24 +1,28 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { Alert } from "./alert.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class AlertService {
-    private readonly alerts: Alert[] = [];
+    constructor(
+        @Inject('ALERT_REPOSITORY')
+        private alertRepository: Repository<Alert>,
+    ) { }
 
-    create(alert: Alert) {
-        this.alerts.push(alert);
+    async create(alert: Alert): Promise<Alert> {
+        return this.alertRepository.save(alert);
     }
 
-    findAll(): Alert[] {
-        return this.alerts;
+    async findAll(): Promise<Alert[]> {
+        return this.alertRepository.find();
     }
 
-    update(alert: Alert) {
-        this.alerts[alert.id] = alert;
+    async update(alert: Alert): Promise<Alert> {
+        return this.alertRepository.save(alert);
     }
 
-    findOne(id: number): Alert {
-        return this.alerts[id];
+    async findOne(id: number): Promise<Alert> {
+        return this.alertRepository.findOneBy({ id: id });
     }
 
 }
