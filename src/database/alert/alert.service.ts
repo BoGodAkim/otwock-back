@@ -25,4 +25,8 @@ export class AlertService {
         return this.alertRepository.findOneBy({ id: id });
     }
 
+    async delete(id: number): Promise<void> {
+        await this.alertRepository.delete(id);
+    }
+
 }

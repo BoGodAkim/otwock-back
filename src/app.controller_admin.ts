@@ -1,29 +1,31 @@
-import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import { AppService } from './app.service';
 import { randomUUID } from 'crypto';
+import {AlertService} from "./database/alert/alert.service";
+import {Alert} from "./database/alert/alert.entity";
 
 @Controller('app')
 export class AppControllerAdmin {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly alertService: AlertService) {}
 
 
-    @Post()
-    addAlert() {
-        //return this.appService.addAlert();
+    @Post('/alert')
+    addAlert(@Body() alert: Alert) {
+        return this.alertService.create(alert);
     }
 
-    @Put()
-    updateAlert() {
-        //return this.appService.updateAlert();
+    @Put('/alert')
+    updateAlert(@Body() alert: Alert) {
+        return this.alertService.update(alert);
     }
 
-    @Delete()
-    deleteAlert() {
-        //return this.appService.deleteAlert();
+    @Delete('/alert/:id')
+    deleteAlert(@Param('id') id: number) {
+        return this.alertService.delete(id);
     }
 
-    @Get()
-    getAllAlerts() {
-        //return this.appService.getAllAlerts();
+    @Get('/alert')
+    getAllAlerts(): Promise<Alert[]> {
+        return this.alertService.findAll();
     }
 }
