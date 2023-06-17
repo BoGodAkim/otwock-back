@@ -1,6 +1,5 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 import { Device } from "../device/device.entity";
-import { JoinColumn } from "typeorm/browser";
 import { Circle, circleTransformer } from "../circle";
 
 
@@ -19,6 +18,6 @@ export class Coordinate {
     })
     coordinates: Circle;
 
-    @Column()
-    timestamp: Timestamp;
+    // @Column()
+    // timestamp: Timestamp;
 }

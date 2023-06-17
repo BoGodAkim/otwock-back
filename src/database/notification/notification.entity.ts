@@ -1,6 +1,5 @@
-import {Entity, PrimaryColumn, Column, Timestamp, ManyToOne, OneToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {Entity, Column, ManyToOne, PrimaryGeneratedColumn, JoinColumn} from 'typeorm';
 import {Device} from "../device/device.entity";
-import {JoinColumn} from "typeorm/browser";
 import {Alert} from "../alert/alert.entity";
 
 
