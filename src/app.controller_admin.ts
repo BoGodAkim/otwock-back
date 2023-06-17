@@ -1,6 +1,4 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
-import { AppService } from './app.service';
-import { randomUUID } from 'crypto';
 import {AlertService} from "./database/alert/alert.service";
 import {Alert} from "./database/alert/alert.entity";
 

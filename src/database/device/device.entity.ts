@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, Timestamp, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm';
 import { Circle, circleTransformer } from '../circle';
 import { NotificationAddress } from '../notification_address/notification_address.entity';
 import { Coordinate } from '../coordinate/coordinate.entity';
