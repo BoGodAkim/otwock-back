@@ -22,7 +22,7 @@ export class NotificationsService {
     }));
     const response = await this.firebase.messaging().sendEach(messages);
     console.log(response);
-    console.log(response['responses'][0]);
+    // console.log(response['responses'][0]);
     
   }
 }
