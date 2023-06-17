@@ -12,6 +12,11 @@ export class AppControllerApp {
     return this.appService.getHello();
   }
 
+  @Get()
+  getMyAddresses(@Param('id') id: string) {
+    //return this.appService.getMyAddresses();
+  }
+
   @Post()
   addAddress() {
     // return this.appService.addAddress();
@@ -30,11 +35,6 @@ export class AppControllerApp {
   @Put()
   shareLocation() {
     //return this.appService.shareLocation();
-  }
-
-  @Get()
-  getMyAddresses(@Param('id') id: string) {
-    //return this.appService.getMyAddresses();
   }
 
   @Get()
