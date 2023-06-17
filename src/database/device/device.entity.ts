@@ -9,13 +9,17 @@ export class Device {
     id: string;
 
     @Column({
+        nullable: true,
         type: 'circle',
         transformer: circleTransformer,
     })
     lastCoordinates: Circle;
 
 
-    @Column()
+    @Column(
+        {        nullable: true,
+        }
+    )
     timestamp: Date;
 
     @OneToMany(() => NotificationAddress, notificationAddress => notificationAddress.device)
