@@ -9,11 +9,11 @@ export class Notification {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => Device)
+    @ManyToOne(() => Device, device => device.notificationAddresses)
     @JoinColumn({name: "device_id"})
     device: Device;
 
-    @ManyToOne(type => Alert)
+    @ManyToOne(() => Alert, alert => alert.notifications)
     @JoinColumn({name: "alert_id"})
     alert: Alert;
 

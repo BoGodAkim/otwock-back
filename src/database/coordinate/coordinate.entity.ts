@@ -1,7 +1,7 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp} from "typeorm";
-import {Device} from "../device/device.entity";
-import {JoinColumn} from "typeorm/browser";
-import {Circle, circleTransformer} from "../circle";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Device } from "../device/device.entity";
+import { JoinColumn } from "typeorm/browser";
+import { Circle, circleTransformer } from "../circle";
 
 
 @Entity()
@@ -10,11 +10,12 @@ export class Coordinate {
     id: number;
 
     @ManyToOne(() => Device)
-    @JoinColumn({name: "device_id"})
+    @JoinColumn({ name: "device_id" })
     device: Device;
 
-    @Column({type: 'circle',
-    transformer: circleTransformer,
+    @Column({
+        type: 'circle',
+        transformer: circleTransformer,
     })
     coordinates: Circle;
 
