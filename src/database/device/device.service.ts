@@ -15,6 +15,7 @@ export class DeviceService {
     }
 
     async findOne(@Param() id: string): Promise<Device> {
-        return this.deviceRepository.findOneBy({ id: id });
+        return this.deviceRepository.findOne({where:{id:id}, relations: {notificationAddresses:true}})
+        //return this.deviceRepository.findOneBy({ id: id, relations: {notificationAddresses:true}});
     }
 }
