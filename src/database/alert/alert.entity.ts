@@ -12,6 +12,6 @@ export class Alert {
     @Column()
     isActive: boolean;
 
-    //todo add foreign typeofalert
+    //TODO: add foreign typeofalert
 
 }
