@@ -1,26 +1,19 @@
 import { Entity, PrimaryColumn, Column, Timestamp } from 'typeorm';
+import { Circle, circleTransformer } from '../circle';
 
 @Entity()
 export class Device {
-  @PrimaryColumn()
-  id: string;
+    @PrimaryColumn()
+    id: string;
 
-  @Column({
-    type: 'circle',
-    transformer: {
-      to: (value: any) => `(${value.x},${value.y}),${value.radius}`,
-      from: (value: string) => {
-        const [x, y, radius] = value.substring(1, value.length - 1).split(',');
-        return {
-          x: parseFloat(x),
-          y: parseFloat(y),
-          radius: parseFloat(radius),
-        };
-      },
-    },
-  })
-  lastCoordinates: { x: number; y: number; radius: number };
+    @Column({
+        type: 'circle',
+        transformer: circleTransformer,
+    })
+    lastCoordinates: Circle;
 
-  @Column()
-  Timestamp: Timestamp;
+
+    @Column()
+    Timestamp: Timestamp;
+
 }
