@@ -1,10 +1,10 @@
-import { Entity, PrimaryColumn, Column, Timestamp } from 'typeorm';
+import { Entity, PrimaryColumn, Column, Timestamp, PrimaryGeneratedColumn } from 'typeorm';
 
 
-@Entity
+@Entity()
 export class Alert {
-    @PrimaryColumn()
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column()
     description: string;
