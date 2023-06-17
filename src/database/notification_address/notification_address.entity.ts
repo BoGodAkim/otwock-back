@@ -7,7 +7,7 @@ export class NotificationAddress {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => Device, device => device.notificationAddresses)
+    @ManyToOne(() => Device, device => device.notificationAddresses)
     @JoinColumn({ name: 'device_id' })
     device: Device;
 
@@ -31,6 +31,6 @@ export class NotificationAddress {
 
     @Column()
     houseNumber: string;
-    
+
     //TODO: add more fields
 }
