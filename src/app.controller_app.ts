@@ -6,6 +6,7 @@ import { DeviceService } from "./database/device/device.service";
 import { NotificationAddress } from './database/notification_address/notification_address.entity';
 import { Device } from './database/device/device.entity';
 import { Circle } from './database/circle';
+import { Notification } from './database/notification/notification.entity';
 
 
 @Controller('app')
@@ -13,7 +14,7 @@ export class AppControllerApp {
   constructor(private readonly alertService: AlertService,
     private readonly notificationAddressService: NotificationAddressService,
     private readonly deviceService: DeviceService) { }
-  
+
   private async checkDevice(id: string): Promise<boolean> {
     let device = await this.deviceService.findOne(id);
     if (device == null) {
@@ -72,9 +73,11 @@ export class AppControllerApp {
     this.deviceService.updateLocation(id, location);
   }
 
-  @Get()
-  getMyNotifications(@Param('id') id: string) {
-    
+  @Get('/:id/notification')
+  async getMyNotifications(@Param('id') id: string): Promise<Notification[]> {
+    if (!await this.checkDevice(id)) {
+      return;
+    }
+    return (await this.deviceService.findOne(id)).notifications;
   }
-
 }
