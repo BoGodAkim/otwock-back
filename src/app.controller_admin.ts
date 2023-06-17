@@ -25,7 +25,10 @@ export class AppControllerAdmin {
   }
 
   @Put('/alert/:alertId')
-  async updateAlert(@Param('alertId') alertId: number, @Body() alert: Alert): Promise<void> {
+  async updateAlert(
+    @Param('alertId') alertId: number,
+    @Body() alert: Alert,
+  ): Promise<void> {
     alert.id = alertId;
     await this.alertService.update(alert);
   }

@@ -22,5 +22,8 @@ export class Notification {
   alert: Alert;
 
   @Column()
-  text: string;
+  title: string;
+
+  @Column()
+  body: string;
 }
