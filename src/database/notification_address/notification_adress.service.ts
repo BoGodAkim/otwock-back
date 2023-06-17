@@ -1,29 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { NotificationAddress } from "./notification_address.entity";
+import { Repository } from 'typeorm';
+import { DeleteResult } from 'typeorm/browser';
 
 @Injectable()
 export class NotificationAddressService {
-    constructor() {}
+    constructor(
+        @Inject('NOTIFICATION_ADDRESS_REPOSITORY')
+        private notificationAddressRepository: Repository<NotificationAddress>,
+    ) { }
 
-    private readonly notificationAddresses: NotificationAddress[] = [];
-
-    create(notificationAddress: NotificationAddress) {
-        this.notificationAddresses.push(notificationAddress);
+    async create(notificationAddress: NotificationAddress): Promise<NotificationAddress> {
+        return this.notificationAddressRepository.save(notificationAddress);
     }
 
-    findAll(): NotificationAddress[] {
-        return this.notificationAddresses;
+    async findAll(): Promise<NotificationAddress[]> {
+        return this.notificationAddressRepository.find();
     }
 
-    update(notificationAddress: NotificationAddress) {
-        this.notificationAddresses[notificationAddress.id] = notificationAddress;
+    async update(notificationAddress: NotificationAddress): Promise<NotificationAddress> {
+        return this.notificationAddressRepository.save(notificationAddress);
     }
 
-    delete(notificationAddress: NotificationAddress) {
-        this.notificationAddresses.splice(notificationAddress.id, 1);
+    async delete(id: number): Promise<DeleteResult> {
+        return this.notificationAddressRepository.delete({ id: id });
     }
 
-    findOne(id: number): NotificationAddress {
-        return this.notificationAddresses[id];
+    async findOne(id: number): Promise<NotificationAddress> {
+        return this.notificationAddressRepository.findOneBy({ id: id })
     }
 }
