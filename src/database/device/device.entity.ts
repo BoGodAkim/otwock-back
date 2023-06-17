@@ -14,6 +14,6 @@ export class Device {
 
 
     @Column()
-    Timestamp: Timestamp;
+    timestamp: Timestamp;
 
 }
