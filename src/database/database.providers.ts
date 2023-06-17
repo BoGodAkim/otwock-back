@@ -26,10 +26,10 @@ export const databaseProviders = [
             return dataSource.initialize();
         },
     },
-    ...alertProviders,
-    ...areaProviders,
-    ...coordinateProviders,
-    ...deviceProviders,
-    ...notificationProviders,
-    ...notificationAddressProviders,
+    // ...alertProviders,
+    // ...areaProviders,
+    // ...coordinateProviders,
+    // ...deviceProviders,
+    // ...notificationProviders,
+    // ...notificationAddressProviders,
 ];
