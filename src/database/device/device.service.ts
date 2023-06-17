@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import {Inject, Injectable, Param} from "@nestjs/common";
 import { Repository } from "typeorm";
 import { Device } from "./device.entity";
 
@@ -9,4 +9,8 @@ export class DeviceService {
         private deviceRepository:
         Repository<Device>,
     ) { }
+
+    async findOne(@Param() id: string): Promise<Device> {
+        return this.deviceRepository.findOneBy({ id: id });
+    }
 }
