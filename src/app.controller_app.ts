@@ -14,7 +14,7 @@ export class AppControllerApp {
 
   @Get()
   getMyAddresses(@Param('id') id: string) {
-    //return this.appService.getMyAddresses();
+    
   }
 
   @Post()

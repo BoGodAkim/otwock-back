@@ -1,4 +1,11 @@
 import { DataSource } from 'typeorm';
+import { alertProviders } from './alert/alert.providers';
+import { Area } from './area/area.entity';
+import { areaProviders } from './area/area.providers';
+import { coordinateProviders } from './coordinate/coordinate.providers';
+import { deviceProviders } from './device/device.provider';
+import { notificationProviders } from './notification/notification.providers';
+import { notificationAddressProviders } from './notification_address/notification_address.providers';
 
 export const databaseProviders = [
     {
@@ -12,7 +19,7 @@ export const databaseProviders = [
                 password: 'password',
                 database: 'postgres',
                 entities: [
-                    __dirname + '/../**/*.entity{.ts,.js}',
+                    __dirname + '/**/*.entity{.ts,.js}',
                 ],
                 synchronize: true,
             });
@@ -20,4 +27,10 @@ export const databaseProviders = [
             return dataSource.initialize();
         },
     },
+    ...alertProviders,
+    ...areaProviders,
+    ...coordinateProviders,
+    ...deviceProviders,
+    ...notificationProviders,
+    ...notificationAddressProviders,
 ];
