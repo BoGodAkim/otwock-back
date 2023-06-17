@@ -1,6 +1,5 @@
 import { DataSource } from 'typeorm';
 import { alertProviders } from './alert/alert.providers';
-import { Area } from './area/area.entity';
 import { areaProviders } from './area/area.providers';
 import { coordinateProviders } from './coordinate/coordinate.providers';
 import { deviceProviders } from './device/device.provider';
