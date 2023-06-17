@@ -4,12 +4,12 @@ import {JoinColumn} from "typeorm/browser";
 import {Circle, circleTransformer} from "../circle";
 
 
-@Entity
+@Entity()
 export class Coordinate {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => Device)
+    @ManyToOne(() => Device)
     @JoinColumn({name: "device_id"})
     device: Device;
 
