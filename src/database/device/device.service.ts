@@ -10,6 +10,10 @@ export class DeviceService {
         Repository<Device>,
     ) { }
 
+    async create(device: Device): Promise<Device> {
+        return this.deviceRepository.save(device);
+    }
+
     async findOne(@Param() id: string): Promise<Device> {
         return this.deviceRepository.findOneBy({ id: id });
     }
