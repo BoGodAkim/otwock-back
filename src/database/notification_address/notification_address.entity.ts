@@ -1,8 +1,8 @@
-import { Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Entity } from "typeorm";
 import { Device } from "../device/device.entity";
 import { circleTransformer, Circle } from "../circle";
 
-
+@Entity()
 export class NotificationAddress {
     @PrimaryGeneratedColumn()
     id: number;
