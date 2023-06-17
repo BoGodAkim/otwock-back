@@ -39,7 +39,9 @@ export class AppControllerApp {
   }
 
   @Get('/:id/myAddresses')
-  async getMyAddresses(@Param('id') id: string): Promise<NotificationAddress[]> {
+  async getMyAddresses(
+    @Param('id') id: string,
+  ): Promise<NotificationAddress[]> {
     if (!(await this.checkDevice(id))) {
       return;
     }
