@@ -1,5 +1,6 @@
-import { Entity, PrimaryColumn, Column, Timestamp } from 'typeorm';
+import { Entity, PrimaryColumn, Column, Timestamp, OneToMany } from 'typeorm';
 import { Circle, circleTransformer } from '../circle';
+import { NotificationAddress } from '../notification_address/notification_address.entity';
 
 @Entity()
 export class Device {
@@ -15,5 +16,8 @@ export class Device {
 
     @Column()
     timestamp: Timestamp;
+
+    @OneToMany(() => NotificationAddress, notificationAddress => notificationAddress.device)
+    notificationAddresses: NotificationAddress[];
 
 }

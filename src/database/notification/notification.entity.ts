@@ -1,4 +1,4 @@
-import {Column, Entity, ManyToOne, PrimaryColumn} from 'typeorm';
+import {Entity, PrimaryColumn, Column, Timestamp, ManyToOne, OneToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {Device} from "../device/device.entity";
 import {JoinColumn} from "typeorm/browser";
 import {Alert} from "../alert/alert.entity";
@@ -6,8 +6,8 @@ import {Alert} from "../alert/alert.entity";
 
 @Entity()
 export class Notification {
-    @PrimaryColumn()
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @ManyToOne(type => Device)
     @JoinColumn({name: "device_id"})
