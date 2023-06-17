@@ -14,7 +14,7 @@ export class AlertService {
     }
 
     async findAll(): Promise<Alert[]> {
-        return this.alertRepository.find();
+        return this.alertRepository.find({relations: ['area']});
     }
 
     async update(alert: Alert): Promise<Alert> {
@@ -22,7 +22,7 @@ export class AlertService {
     }
 
     async findOne(id: number): Promise<Alert> {
-        return this.alertRepository.findOneBy({ id: id });
+        return this.alertRepository.findOne({ where: { id: id }, relations: ['area'] });
     }
 
     async delete(id: number): Promise<void> {
