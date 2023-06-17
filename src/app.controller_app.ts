@@ -29,11 +29,12 @@ export class AppControllerApp {
     return device != null;
   }
 
-  @Get('/id')
-  async getId(@Body() fcmToken: string): Promise<string> {
+  @Get('/id/:fcmToken')
+  async getId(@Param('fcmToken') fcmToken: string): Promise<string> {
     const uuid = randomUUID();
     const device = new Device();
     device.id = uuid;
+    device.fcmToken = fcmToken;
     await this.deviceService.create(device);
     return uuid;
   }
