@@ -42,23 +42,4 @@ export class AppControllerApp {
     //return this.appService.getMyAlerts();
   }
 
-  @Post()
-  addAlert() {
-    //return this.appService.addAlert();
-  }
-
-  @Put()
-  updateAlert() {
-    //return this.appService.updateAlert();
-  }
-
-  @Delete()
-  deleteAlert() {
-    //return this.appService.deleteAlert();
-  }
-
-  @Get()
-  getAllAlerts() {
-    //return this.appService.getAllAlerts();
-  }
 }
