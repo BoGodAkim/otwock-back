@@ -1,5 +1,6 @@
-import { Column, Entity, Polygon, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, Polygon, PrimaryGeneratedColumn } from "typeorm";
 import { Circle, circleTransformer } from "../circle";
+import { Alert } from "../alert/alert.entity";
 
 
 @Entity()
@@ -43,5 +44,9 @@ export class Area {
         nullable: true,
     })
     houseNumber: string;
+
+    @ManyToOne(() => Alert, alert => alert.areas)
+    @JoinColumn({ name: 'alert_id' })
+    alert: Alert;
 
 }

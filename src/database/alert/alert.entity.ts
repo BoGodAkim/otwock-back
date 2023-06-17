@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column, Timestamp, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, Timestamp, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Area } from '../area/area.entity';
 
 
 @Entity()
@@ -11,6 +12,9 @@ export class Alert {
 
     @Column()
     isActive: boolean;
+
+    @OneToMany(() => Area, area => area.alert)
+    areas: Area[];
 
     //TODO: add foreign typeofalert
 
