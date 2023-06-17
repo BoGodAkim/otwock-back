@@ -16,4 +16,9 @@ export class AlertService {
     update(alert: Alert) {
         this.alerts[alert.id] = alert;
     }
+
+    findOne(id: number): Alert {
+        return this.alerts[id];
+    }
+
 }
