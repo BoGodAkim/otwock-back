@@ -26,7 +26,9 @@ export class AppControllerAdmin {
   @Post('/alert')
   async addAlert(@Body() alert: Alert): Promise<void> {
     alert = await this.alertService.create(alert);
-    const notifications = await this.notificationService.createNotifications(alert);
+    const notifications = await this.notificationService.createNotifications(
+      alert,
+    );
     await this.notificationsService.sendMessages(notifications);
   }
 

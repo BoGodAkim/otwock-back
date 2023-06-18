@@ -19,9 +19,14 @@ export class NotificationService {
     let notifications: Notification[] = [];
     let notificationAddressesIds: Set<NotificationAddress> = new Set();
     alert.areas.forEach(async (area) => {
-      notificationAddressesIds = new Set([...notificationAddressesIds, ...await this.notificationAddressService.findAllInCircle(area), ...await this.notificationAddressService.findAllInPolygon(area), ...await this.notificationAddressService.findAllByAddress(area)]);
+      notificationAddressesIds = new Set([
+        ...notificationAddressesIds,
+        ...(await this.notificationAddressService.findAllInCircle(area)),
+        ...(await this.notificationAddressService.findAllInPolygon(area)),
+        ...(await this.notificationAddressService.findAllByAddress(area)),
+      ]);
     });
-    notificationAddressesIds.forEach(async (notificationAddress) => { 
+    notificationAddressesIds.forEach(async (notificationAddress) => {
       const notification = new Notification();
       notification.alert = alert;
       notification.device = notificationAddress.device;
