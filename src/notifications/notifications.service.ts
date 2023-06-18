@@ -9,8 +9,9 @@ import * as shell from 'shelljs';
 
 @Injectable()
 export class NotificationsService {
-  constructor(@Inject('FIREBASE') private readonly firebase: firebase.app.App) {
-  }
+  constructor(
+    @Inject('FIREBASE') private readonly firebase: firebase.app.App,
+  ) {}
 
   async sendMessages(notifications: Notification[]) {
     const messages = notifications.map((notification) => ({
@@ -23,6 +24,5 @@ export class NotificationsService {
     const response = await this.firebase.messaging().sendEach(messages);
     console.log(response);
     // console.log(response['responses'][0]);
-    
   }
 }

@@ -21,7 +21,7 @@ export class NotificationAddress {
     type: 'circle',
     transformer: circleTransformer,
   })
-  circle: Circle;
+  location: Circle;
 
   @Column()
   country: string;
