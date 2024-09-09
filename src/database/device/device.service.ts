@@ -19,7 +19,6 @@ export class DeviceService {
       where: { id: id },
       relations: { notificationAddresses: true, notifications: true },
     });
-    //return this.deviceRepository.findOneBy({ id: id, relations: {notificationAddresses:true}});
   }
 
   async findAll(): Promise<Device[]> {

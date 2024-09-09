@@ -1,11 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Notification } from '../database/notification/notification.entity';
-import { mapLimit } from 'async';
 import * as firebase from 'firebase-admin';
 import 'firebase-admin/messaging';
-import { BatchResponse } from 'firebase-admin/lib/messaging/messaging-api';
-import { chunk } from 'lodash';
-import * as shell from 'shelljs';
 
 @Injectable()
 export class NotificationsService {
@@ -23,6 +19,5 @@ export class NotificationsService {
     }));
     const response = await this.firebase.messaging().sendEach(messages);
     console.log(response);
-    // console.log(response['responses'][0]);
   }
 }

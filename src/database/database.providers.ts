@@ -1,10 +1,4 @@
 import { DataSource } from 'typeorm';
-import { alertProviders } from './alert/alert.providers';
-import { areaProviders } from './area/area.providers';
-import { coordinateProviders } from './coordinate/coordinate.providers';
-import { deviceProviders } from './device/device.provider';
-import { notificationProviders } from './notification/notification.providers';
-import { notificationAddressProviders } from './notification_address/notification_address.providers';
 
 export const databaseProviders = [
   {
@@ -24,10 +18,4 @@ export const databaseProviders = [
       return dataSource.initialize();
     },
   },
-  // ...alertProviders,
-  // ...areaProviders,
-  // ...coordinateProviders,
-  // ...deviceProviders,
-  // ...notificationProviders,
-  // ...notificationAddressProviders,
 ];
